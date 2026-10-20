@@ -226,6 +226,10 @@ body {
     text-decoration: none;
 }
 
+.brand-intro__more:hover {
+    color: #9EC9D6;
+}
+
 /* core value ============================================= */
 /* ===== 전역 초기화 (이미 있으면 이 3줄은 넣지 마세요) ===== */
 * {
@@ -589,7 +593,7 @@ img {
     --dark: #222;
     --bg: #f0efea;
     --line: #d9d9d4;
-    --mint: #8ac4c4;
+    --mint: #9EC9D6;
 }
 
 /* ===== 가로 스크롤 섹션 ===== */
