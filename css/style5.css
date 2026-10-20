@@ -1,0 +1,376 @@
+@charset "utf-8";
+
+/* webfont */
+/* 웹폰트없으면 지우세요!!! */
+html,
+body,
+div,
+span,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+em,
+img,
+small,
+strong,
+b,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tr,
+th,
+td,
+article,
+aside,
+footer,
+header,
+nav,
+section,
+summary,
+video,
+* {
+    padding: 0;
+    margin: 0;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+html {
+    /* Prevent font scaling in landscape */
+
+    -webkit-text-size-adjust: none;
+    /*Chrome, Safari, newer versions of Opera*/
+
+    -moz-text-size-adjust: none;
+    /*Firefox*/
+
+    -ms-text-size-adjust: none;
+    /*Ie*/
+
+    -o-text-size-adjust: none;
+    /*old versions of Opera*/
+
+}
+
+body {
+    font-family: 'Pretendard';
+    font-size: 16px;
+    line-height: 1.5;
+    color: #111;
+    font-weight: 400;
+}
+
+#wrap {
+    min-width: 1500px;
+}
+
+
+/*  header ================================================================================ */
+#header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 35px;
+    background: #c7ff00;
+    color: #222;
+    font-size: 16px;
+    font-weight: 400;
+    padding-top: 5px;
+}
+
+.inner_header {
+    width: 1500px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 로고 구역 (오른쪽 점선 구분) */
+.header__logo {
+    display: block;
+}
+
+.header__logo img {
+    display: block;
+}
+
+/* 메뉴 구역 */
+.header__nav ul {
+    display: flex;
+    gap: 8vw;
+    padding-left: 36px;
+    list-style: none;
+}
+
+.header__nav a {
+    text-decoration: none;
+}
+
+/* 아이콘 구역 */
+.header__util {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding-right: 20px;
+}
+
+.header__util a,
+.header__menu {
+    display: flex;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.header__util img {
+    display: block;
+    width: 16px;
+    height: 16px;
+}
+
+/* sub header ==== */
+/* ===== 서브 내비게이션 ===== */
+.subnav {
+    --header: 40px;                              /* 헤더 높이 */
+    position: sticky;
+    top: var(--header);                          /* 헤더 바로 아래에 붙음 */
+    z-index: 99;                                 /* 헤더(100)보다 아래 */
+    height: 36px;
+    background: #f1efea;
+}
+
+.subnav__list {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;                   /* 오른쪽 끝을 기준으로 배치 */
+    width: 1500px;                               /* 헤더(.inner_header)와 같은 너비 */
+    height: 100%;
+    margin: 0 auto;
+    padding-right: 260px;                        /* 오른쪽 끝에서 띄우는 거리 (아래에서 조절) */
+    gap: 5vw;                                    /* 항목 사이 간격 (헤더 메뉴와 같은 값) */
+}
+
+.subnav__list a {
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: .02em;
+    color: #aaa;                                 /* 비활성: 회색 */
+    transition: color .3s ease;
+}
+
+.subnav__list a:hover,
+.subnav__list a.is-active {
+    color: #111;                                 /* 활성: 진한 글자 */
+    font-weight: 600;
+}
+
+/* container ============================================================================= */
+/* ===== 상품 목록 ===== */
+.shop-list {
+    width: 1500px;                               /* 헤더(.inner_header)와 같은 너비 */
+    margin: 0 auto;
+    padding: 70px 0 40px;
+}
+
+.shop-list2 {
+    width: 1500px;                               /* 헤더(.inner_header)와 같은 너비 */
+    margin: 0 auto;
+    padding: 70px 0 140px;
+}
+
+.shop-list__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);       /* 한 줄에 4개 */
+    gap: 40px 16px;                              /* 세로 | 가로 간격 */
+}
+
+
+.product a {
+    display: block;
+}
+
+/* ===== 사진 영역 ===== */
+.product__thumb {
+    position: relative;
+    aspect-ratio: 267 / 345;                     /* 시안 비율 */
+    border-radius: 10px;
+    background: #f7f7f7;
+    overflow: hidden;
+}
+
+.product__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;                         /* 상품이 잘리지 않게 */
+    transition: opacity .5s ease, transform .8s cubic-bezier(.16, 1, .3, 1);
+}
+
+/* 호버용 사진: 평소엔 투명 */
+.product__img--hover {
+    opacity: 0;
+}
+
+.product a:hover .product__img:not(.product__img--hover) {
+    opacity: 0;
+}
+.product a:hover .product__img--hover {
+    opacity: 1;
+}
+
+/* ===== 그라데이션 동그라미 ===== */
+.product__dot {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: linear-gradient(90deg, #c7ff00, #f2f1ec);     /* 평소: 연두 → 크림 */
+    overflow: hidden;
+}
+
+.product__dot::before {
+    content: '';
+    position: absolute;
+    inset: -8px;                                  /* 동그라미 바깥 8px까지 호버 영역 확대 */
+}
+
+/* 호버 때 위에 덮이는 색 (그라데이션은 직접 전환이 안 돼서 겹쳐서 페이드) */
+.product__dot::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #c7ff00, #9ec9d6);     /* 호버: 블루 → 크림 */
+    opacity: 0;
+    transition: opacity .5s ease;
+}
+.product__dot:hover::after {
+    opacity: 1;
+}
+
+/* ===== 상품명, 가격 ===== */
+.product__name {
+    margin-top: 14px;
+    padding-left: 6px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.product__price {
+    margin-top: 4px;
+    padding-left: 6px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+
+/*  footer ================================================================================ */
+img {
+    display: block;
+    max-width: 100%;
+}
+
+.footer {
+    background: #2a2a2a;
+    color: #fff;
+    padding: 20px 0 60px;
+}
+
+.footer__inner {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 32px clamp(20px, 12.5vw, 240px) 0;
+}
+
+/* ===== 위쪽: 메뉴 + 정보 + 버튼 ===== */
+.footer__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.footer__nav ul {
+    display: flex;
+    gap: 20px;
+}
+
+.footer__nav a {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.footer__address {
+    margin-top: 12px;
+    font-style: normal;
+    /* address 태그의 기본 기울임 제거 */
+    font-size: 10px;
+    line-height: 1.7;
+    color: #bdbdbd;
+}
+
+/* ===== 맨 위로 버튼 ===== */
+.footer__top-btn {
+    flex: none;
+    display: block;
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    transition: transform .3s ease;
+}
+
+.footer__top-btn:hover {
+    transform: translateY(-4px);
+}
+
+/* hover 시 살짝 위로 */
+.footer__top-btn img {
+    width: 100%;
+    height: 100%;
+}
+
+/* ===== 큰 로고 ===== */
+.footer__logo {
+    margin-top: 120px;
+}
+
+.footer__logo img {
+    width: clamp(200px, 42vw, 800px);
+    /* 시안 비율: 화면 너비의 약 42% */
+    height: auto;
+}
