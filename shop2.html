@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1500">
+    <!-- 브라우저 뷰포트 너비를 1360px로 고정하여 페이지를 그리도록 설정 -->
+    <title>CLIPSE</title>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- webfont 연결-->
+    <!-- font-family: 'Pretendard'; -->
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <!-- css 연결-->
+    <link rel="stylesheet" href="css/style4.css">
+</head>
+
+<body>
+    <!-- header =================================================================================================== -->
+    <div id="header">
+        <div class="inner_header">
+            <!-- 왼쪽: 로고 -->
+            <div class="header__logo">
+                <a href="./index.html">
+                    <img src="./images/header/header_logo.svg" alt="CLIPSE">
+                </a>
+            </div>
+
+
+            <!-- 가운데: 메뉴 -->
+            <nav class="header__nav" aria-label="주요 메뉴">
+                <ul>
+                    <li><a href="./brand.html">Brand</a></li>
+                    <li><a href="./shop.html">Shop</a></li>
+                    <li><a href="./about.html">About</a></li>
+                </ul>
+            </nav>
+
+            <!-- 오른쪽: 아이콘 -->
+            <div class="header__util">
+                <a href="#" aria-label="마이페이지">
+                    <img src="./images/header/login.svg" alt="login">
+                </a>
+                <a href="#" aria-label="장바구니">
+                    <img src="./images/header/shop.svg" alt="shop">
+                </a>
+                <button type="button" class="header__menu" aria-label="전체 메뉴 열기">
+                    <img src="./images/header/sandwich.svg" alt="sandwich">
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- sub header ============================================================================================== -->
+    <nav class="subnav" aria-label="카테고리">
+        <ul class="subnav__list">
+            <li><a href="./shop.html" class="is-active" aria-current="true">SUNCARE</a></li>
+            <li><a href="./shop2.html">HYDRATION</a></li>
+            <li><a href="./shop3.html">ADD</a></li>
+        </ul>
+    </nav>
+
+    <!-- container -->
+    <div id="wrap">
+        <div class="item">
+            <img src="./images/shop/hyd_mist_main.png" alt="clipse_sunstick">
+        </div>
+
+        <div class="item_text">
+            <h2>RESET YOUR SKIN IN MOTION</h2>
+            <p>
+                열 오른 피부에 가볍게 뿌리는 쿨링 미스트. <br>
+                얼굴과 바디에 산뜻한 수분감과 쿨링감을 더합니다.
+            </p>
+        </div>
+
+        <div class="item_video">
+            <video src="./images/shop/hyd_mist_video.mp4" autoplay loop muted playsinline></video>
+        </div>
+    </div>
+
+    <section class="shop-list">
+        <ul class="shop-list__grid">
+
+            <li class="product">
+                <a href="#">
+                    <div class="product__thumb">
+                        <img class="product__img" src="./images/shop/hyd_mist.png" alt="CLIPSE SUN STICK">
+                        <img class="product__img product__img--hover" src="./images/shop/hyd_mist_hover.png" alt="sun stick hover"
+                            aria-hidden="true">
+                        <span class="product__dot" aria-hidden="true"></span>
+                    </div>
+                    <h3 class="product__name">CLIPSE COOLING MIST</h3>
+                    <p class="product__price">₩17,900</p>
+                </a>
+            </li>
+
+            <li class="product">
+                <a href="#">
+                    <div class="product__thumb">
+                        <img class="product__img" src="./images/shop/hyd_gel.png" alt="gel">
+                        <img class="product__img product__img--hover" src="./images/shop/hyd_gel_hover.png" alt="gel hover"
+                            aria-hidden="true">
+                        <span class="product__dot" aria-hidden="true"></span>
+                    </div>
+                    <h3 class="product__name">CLIPSE SOOTHING GEL</h3>
+                    <p class="product__price">₩14,900</p>
+                </a>
+            </li>
+
+        </ul>
+    </section>
+
+    <div id="wrap">
+        <div class="item">
+            <img src="./images/shop/hyd_patch_main.png" alt="clipse_sunstick">
+        </div>
+
+        <div class="item_text">
+            <h2>COOL DOWN. KEEP MOVING</h2>
+            <p>
+                강한 햇빛과 움직임으로 열 오른 눈가에 <br>
+                시원한 쿨링감과 편안한 진정 케어를 선사합니다.
+            </p>
+        </div>
+
+        <div class="item_video">
+            <video src="./images/shop/hyd_patch_video.mp4" autoplay loop muted playsinline></video>
+        </div>
+    </div>
+
+    <section class="shop-list">
+        <ul class="shop-list__grid">
+
+            <li class="product">
+                <a href="#">
+                    <div class="product__thumb">
+                        <img class="product__img" src="./images/shop/hyd_patch.png" alt="CLIPSE patch">
+                        <img class="product__img product__img--hover" src="./images/shop/hyd_patch_hover.png" alt="patch hover"
+                            aria-hidden="true">
+                        <span class="product__dot" aria-hidden="true"></span>
+                    </div>
+                    <h3 class="product__name">CLIPSE COOLING EYE PATCH</h3>
+                    <p class="product__price">₩17,900</p>
+                </a>
+            </li>
+
+            <li class="product">
+                <a href="#">
+                    <div class="product__thumb">
+                        <img class="product__img" src="./images/shop/hyd_wash.png" alt="CLIPSE hyd_wash">
+                        <img class="product__img product__img--hover" src="./images/shop/hyd_wash_hover.png" alt="hyd_wash hover"
+                            aria-hidden="true">
+                        <span class="product__dot" aria-hidden="true"></span>
+                    </div>
+                    <h3 class="product__name">CLIPSE ALL IN ONE WASH</h3>
+                    <p class="product__price">₩14,900</p>
+                </a>
+            </li>
+
+        </ul>
+    </section>
+
+
+    <!-- footer ===================================================================================================== -->
+    <footer class="footer">
+        <div class="footer__inner">
+
+            <div class="footer__top">
+                <div class="footer__info">
+                    <nav class="footer__nav" aria-label="푸터 메뉴">
+                        <ul>
+                            <li><a href="./brand.html">BRAND</a></li>
+                            <li><a href="#">SHOP</a></li>
+                            <li><a href="#">ABOUT</a></li>
+                        </ul>
+                    </nav>
+                    <address class="footer__address">
+                        <p>주) 00000000 | 대표자명: 고상미 | 사업자번호: 000-00-00000 | 000-0000-0000</p>
+                        <p>이메일문의 : service.kr@clipse.com | 주소: 부산광역시 강서구 OOOO.</p>
+                    </address>
+                </div>
+
+                <button type="button" class="footer__top-btn" aria-label="맨 위로 이동">
+                    <img src="./images/footer/up.svg" alt="up">
+                </button>
+            </div>
+
+            <div class="footer__logo">
+                <img src="./images/footer/footer_logo.svg" alt="CLIPSE_푸터">
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- jQuery 오픈소스 연결 -->
+    <script src="js/jquery-4.0.0.min.js"></script>
+
+    <!-- jQuery 파일 연결 -->
+    <script src="js/script4.js"></script>
+</body>
