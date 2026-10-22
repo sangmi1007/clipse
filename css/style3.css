@@ -1,0 +1,670 @@
+@charset "utf-8";
+
+/* webfont */
+/* 웹폰트없으면 지우세요!!! */
+html,
+body,
+div,
+span,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+em,
+img,
+small,
+strong,
+b,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tr,
+th,
+td,
+article,
+aside,
+footer,
+header,
+nav,
+section,
+summary,
+video,
+* {
+    padding: 0;
+    margin: 0;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+html {
+    /* Prevent font scaling in landscape */
+
+    -webkit-text-size-adjust: none;
+    /*Chrome, Safari, newer versions of Opera*/
+
+    -moz-text-size-adjust: none;
+    /*Firefox*/
+
+    -ms-text-size-adjust: none;
+    /*Ie*/
+
+    -o-text-size-adjust: none;
+    /*old versions of Opera*/
+
+    scrollbar-gutter: stable;
+}
+
+
+body {
+    font-family: 'Pretendard';
+    font-size: 16px;
+    line-height: 1.5;
+    color: #111;
+}
+
+#wrap {
+    min-width: 1500px;
+}
+
+header a,
+header button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+header a:active,
+header button:active {
+    transform: none;
+}
+
+/*  header ================================================================================ */
+#header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 35px;
+    background: #c7ff00;
+    color: #222;
+    font-size: 16px;
+    font-weight: 400;
+    padding-top: 5px;
+}
+
+.inner_header {
+    width: 1500px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 로고 구역 (오른쪽 점선 구분) */
+.header__logo {
+    display: block;
+}
+
+.header__logo img {
+    display: block;
+}
+
+/* 메뉴 구역 */
+.header__nav ul {
+    display: flex;
+    gap: 8vw;
+    padding-left: 36px;
+    list-style: none;
+}
+
+.header__nav a {
+    text-decoration: none;
+}
+
+/* 아이콘 구역 */
+.header__util {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding-right: 20px;
+}
+
+.header__util a,
+.header__menu {
+    display: flex;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.header__util img {
+    display: block;
+    width: 16px;
+    height: 16px;
+}
+
+/* ===== 햄버거 전체 메뉴 ===== */
+.gnb {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    /* 헤더보다 위 */
+    width: 100%;
+    height: 794px;
+    /* 패널 높이 */
+    max-height: 100vh;
+    background: #f1f0eb;
+    color: #111;
+    transform: translateY(-100%);
+    /* 닫힘: 위로 숨음 */
+    visibility: hidden;
+    transition: transform .5s cubic-bezier(.22, .8, .26, 1),
+        visibility 0s linear .5s;
+}
+
+.gnb.open {
+    transform: none;
+    visibility: visible;
+    transition-delay: 0s;
+}
+
+.gnb a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.gnb ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.gnb__inner {
+    position: relative;
+    width: min(1440px, calc(100% - 48px));
+    /* 1920 기준: 좌우 여백 240 */
+    height: 100%;
+    margin: 0 auto;
+}
+
+/* 맨 위 줄: 헤더 위치에 로고 + X */
+.gnb__top {
+    position: relative;
+    height: 44px;
+}
+
+/* 패널 로고: 위치와 크기는 JS가 헤더 로고에 맞춰 줌 */
+.gnb__logo {
+    position: fixed;
+    display: block;
+}
+
+.gnb__logo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* 메뉴 3줄 (12컬럼 중 3칸씩) */
+.gnb__cols {
+    display: grid;
+    grid-template-columns: repeat(3, 366px) 1fr;
+    margin-top: 102px;
+}
+
+.gnb__col h2 {
+    font-size: 30px;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -.01em;
+}
+
+/* 제목(SHOP / BRAND / ABOUT) 밑 짧은 가로선 */
+.gnb__col h2 {
+    position: relative;
+}
+
+.gnb__col h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    /* 제목 글씨 왼쪽 끝에 맞춤 */
+    top: calc(100% + 14px);
+    /* 제목에서 떨어진 거리 */
+    width: 32px;
+    /* 선 길이 */
+    height: 2px;
+    /* 선 두께 */
+    background: #5a5a5a;
+}
+
+.gnb__col ul {
+    margin-top: 60px;
+}
+
+.gnb__col li+li {
+    margin-top: 20px;
+}
+
+.gnb__col li a {
+    font-size: 24px;
+    line-height: 1.2;
+    color: #6b6b68;
+    transition: color .2s;
+}
+
+.gnb__col li a:hover {
+    color: #111;
+}
+
+/* 오른쪽 위 아이콘: X 버튼 밑에 오른쪽 정렬 (정확한 위치는 JS가 계산) */
+.gnb__util {
+    position: absolute;
+    top: 60px;
+    /* JS가 덮어씀 (JS가 안 돌 때의 대비용 값) */
+    right: 0;
+    display: flex;
+    gap: 24px;
+}
+
+.gnb__util svg {
+    display: block;
+    width: 30px;
+    height: 30px;
+}
+
+/* SNS */
+.gnb__sns {
+    position: absolute;
+    left: 0;
+    top: 648px;
+    display: flex;
+    gap: 24px;
+}
+
+.gnb__sns svg {
+    display: block;
+    width: 30px;
+    height: 30px;
+}
+
+/* 그라데이션 원 */
+.gnb__orb {
+    position: absolute;
+    right: 0;
+    top: 620px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(100deg, #d4f02a 0%, #8fd0a8 50%, #78b4e8 100%);
+}
+
+/* ===== 햄버거 ⇄ X 버튼 ===== */
+.menu-btn {
+    position: relative;
+    flex: none;
+    width: 16px;
+    /* 원래 햄버거 크기 → 헤더가 밀리지 않음 */
+    height: 16px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    color: #111;
+    cursor: pointer;
+}
+
+.menu-btn::after {
+    /* 눈에 안 보이는 클릭 영역 (레이아웃에는 영향 없음) */
+    content: '';
+    position: absolute;
+    inset: -12px;
+}
+
+.menu-btn:focus {
+    outline: none;
+}
+
+.menu-btn:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 6px;
+}
+
+.menu-btn span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 16px;
+    /* 선 길이 */
+    height: 1.5px;
+    /* 선 두께 (기존 2px → 가늘게) */
+    margin: -.75px 0 0 -8px;
+    background: currentColor;
+    transition: transform .4s cubic-bezier(.22, .8, .26, 1);
+}
+
+.menu-btn span:nth-child(1) {
+    transform: translateY(-3px);
+}
+
+/* = 모양 (선 사이 간격 6px) */
+.menu-btn span:nth-child(2) {
+    transform: translateY(3px);
+}
+
+.menu-btn.is-x span:nth-child(1) {
+    transform: rotate(45deg);
+}
+
+/* X 모양 */
+.menu-btn.is-x span:nth-child(2) {
+    transform: rotate(-45deg);
+}
+
+/* 패널 위에 겹치는 X 버튼 (평소엔 숨김) */
+.menu-btn--x {
+    position: fixed;
+    z-index: 1001;
+    /* 패널(1000)보다 위 */
+    visibility: hidden;
+}
+
+.menu-btn--x.show {
+    visibility: visible;
+}
+
+html { scrollbar-gutter: stable; }           /* 스크롤바가 생겨도 폭 고정 */
+
+header {
+  box-sizing: border-box;
+  width: 100%;                               /* 100vw 쓰면 스크롤바 때문에 밀림 → % 사용 */
+  height: 35px;                              /* 높이 고정 */
+  overflow: hidden;                          /* 내용이 늘어나도 높이가 안 변함 */
+}
+header a {
+  transition: none;                          /* 눌렀을 때 크기/위치가 움직이는 효과 제거 */
+  transform: none;
+}
+header a:hover, header a:focus, header a:active {
+  transform: none;
+  font-weight: inherit;                      /* hover 때 글씨 굵기가 바뀌어 옆이 밀리는 것 방지 */
+  letter-spacing: inherit;
+}
+
+/* sub header ==== */
+/* ===== 서브 내비게이션 ===== */
+.subnav {
+    --header: 40px;                              /* 헤더 높이 */
+    position: sticky;
+    top: var(--header);                          /* 헤더 바로 아래에 붙음 */
+    z-index: 99;                                 /* 헤더(100)보다 아래 */
+    height: 36px;
+    background: #f1efea;
+}
+
+.subnav__list {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;                   /* 오른쪽 끝을 기준으로 배치 */
+    width: 1500px;                               /* 헤더(.inner_header)와 같은 너비 */
+    height: 100%;
+    margin: 0 auto;
+    padding-right: 260px;                        /* 오른쪽 끝에서 띄우는 거리 (아래에서 조절) */
+    gap: 5vw;                                    /* 항목 사이 간격 (헤더 메뉴와 같은 값) */
+}
+
+.subnav__list a {
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: .02em;
+    color: #aaa;                                 /* 비활성: 회색 */
+    transition: color .3s ease;
+}
+
+.subnav__list a:hover,
+.subnav__list a.is-active {
+    color: #111;                                 /* 활성: 진한 글자 */
+    font-weight: 600;
+}
+
+/* container ============================================================================== */
+.item {
+    width: 100%;
+}
+
+.item img {
+    display: block;
+}
+
+.item_text {
+    text-align: center;
+    padding: 100px 0;
+    background-color: #2a2a2a;
+    color: #fff;
+}
+
+.item_text h2 {
+    margin-bottom: 20px;
+}
+
+.item_text p {
+    font-weight: 200;
+}
+
+.item_video {
+    width: 100%;
+    height: calc(100vh - 76px);                  /* 헤더 40px + 서브 내비 36px을 뺀 화면 높이 */
+    overflow: hidden;
+    line-height: 0;
+}
+
+.item_video video {
+    display: block;                              /* 아래 여백 제거 */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;                           /* 영상이 영역을 꽉 채움 (넘치는 부분은 잘림) */
+}
+
+/* ===== 상품 목록 ===== */
+.shop-list {
+    width: 1500px;                               /* 헤더(.inner_header)와 같은 너비 */
+    margin: 0 auto;
+    padding: 70px 0 120px;
+}
+
+.shop-list__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);       /* 한 줄에 4개 */
+    gap: 40px 16px;                              /* 세로 | 가로 간격 */
+}
+
+.product a {
+    display: block;
+}
+
+/* ===== 사진 영역 ===== */
+.product__thumb {
+    position: relative;
+    aspect-ratio: 267 / 345;                     /* 시안 비율 */
+    border-radius: 10px;
+    background: #f7f7f7;
+    overflow: hidden;
+}
+
+.product__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;                         /* 상품이 잘리지 않게 */
+    transition: opacity .5s ease, transform .8s cubic-bezier(.16, 1, .3, 1);
+}
+
+/* 호버용 사진: 평소엔 투명 */
+.product__img--hover {
+    opacity: 0;
+}
+
+.product a:hover .product__img:not(.product__img--hover) {
+    opacity: 0;
+}
+.product a:hover .product__img--hover {
+    opacity: 1;
+}
+
+/* ===== 그라데이션 동그라미 ===== */
+.product__dot {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: linear-gradient(90deg, #c7ff00, #f2f1ec);     /* 평소: 연두 → 크림 */
+    overflow: hidden;
+}
+
+.product__dot::before {
+    content: '';
+    position: absolute;
+    inset: -8px;                                  /* 동그라미 바깥 8px까지 호버 영역 확대 */
+}
+
+/* 호버 때 위에 덮이는 색 (그라데이션은 직접 전환이 안 돼서 겹쳐서 페이드) */
+.product__dot::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #c7ff00, #9ec9d6);     /* 호버: 블루 → 크림 */
+    opacity: 0;
+    transition: opacity .5s ease;
+}
+.product__dot:hover::after {
+    opacity: 1;
+}
+
+/* ===== 상품명, 가격 ===== */
+.product__name {
+    margin-top: 14px;
+    padding-left: 6px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.product__price {
+    margin-top: 4px;
+    padding-left: 6px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+
+/*  footer ================================================================================ */
+img {
+    display: block;
+    max-width: 100%;
+}
+
+.footer {
+    background: #2a2a2a;
+    color: #fff;
+    padding: 20px 0 60px;
+}
+
+.footer__inner {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 32px clamp(20px, 12.5vw, 240px) 0;
+}
+
+/* ===== 위쪽: 메뉴 + 정보 + 버튼 ===== */
+.footer__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.footer__nav ul {
+    display: flex;
+    gap: 20px;
+}
+
+.footer__nav a {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.footer__address {
+    margin-top: 12px;
+    font-style: normal;
+    /* address 태그의 기본 기울임 제거 */
+    font-size: 10px;
+    line-height: 1.7;
+    color: #bdbdbd;
+}
+
+/* ===== 맨 위로 버튼 ===== */
+.footer__top-btn {
+    flex: none;
+    display: block;
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    transition: transform .3s ease;
+}
+
+.footer__top-btn:hover {
+    transform: translateY(-4px);
+}
+
+/* hover 시 살짝 위로 */
+.footer__top-btn img {
+    width: 100%;
+    height: 100%;
+}
+
+/* ===== 큰 로고 ===== */
+.footer__logo {
+    margin-top: 120px;
+}
+
+.footer__logo img {
+    width: clamp(200px, 42vw, 800px);
+    /* 시안 비율: 화면 너비의 약 42% */
+    height: auto;
+}
