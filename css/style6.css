@@ -1,0 +1,596 @@
+@charset "utf-8";
+
+/* webfont */
+/* 웹폰트없으면 지우세요!!! */
+html,
+body,
+div,
+span,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+em,
+img,
+small,
+strong,
+b,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tr,
+th,
+td,
+article,
+aside,
+footer,
+header,
+nav,
+section,
+summary,
+video,
+* {
+    padding: 0;
+    margin: 0;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+html {
+    /* Prevent font scaling in landscape */
+
+    -webkit-text-size-adjust: none;
+    /*Chrome, Safari, newer versions of Opera*/
+
+    -moz-text-size-adjust: none;
+    /*Firefox*/
+
+    -ms-text-size-adjust: none;
+    /*Ie*/
+
+    -o-text-size-adjust: none;
+    /*old versions of Opera*/
+
+    scrollbar-gutter: stable;
+}
+
+
+
+body {
+    font-family: 'Pretendard';
+    font-size: 16px;
+    line-height: 1.5;
+    color: #111;
+}
+
+#wrap {
+    min-width: 1500px;
+}
+
+header a,
+header button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+header a:active,
+header button:active {
+    transform: none;
+}
+
+/*  header ================================================================================ */
+#header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 35px;
+    background: #c7ff00;
+    color: #222;
+    font-size: 16px;
+    font-weight: 400;
+    padding-top: 5px;
+}
+
+.inner_header {
+    width: 1500px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 로고 구역 (오른쪽 점선 구분) */
+.header__logo {
+    display: block;
+}
+
+.header__logo img {
+    display: block;
+}
+
+/* 메뉴 구역 */
+.header__nav ul {
+    display: flex;
+    gap: 8vw;
+    padding-left: 36px;
+    list-style: none;
+}
+
+.header__nav a {
+    text-decoration: none;
+}
+
+/* 아이콘 구역 */
+.header__util {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding-right: 20px;
+}
+
+.header__util a,
+.header__menu {
+    display: flex;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.header__util img {
+    display: block;
+    width: 16px;
+    height: 16px;
+}
+
+/* ===== 햄버거 전체 메뉴 ===== */
+.gnb {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    /* 헤더보다 위 */
+    width: 100%;
+    height: 794px;
+    /* 패널 높이 */
+    max-height: 100vh;
+    background: #f1f0eb;
+    color: #111;
+    transform: translateY(-100%);
+    /* 닫힘: 위로 숨음 */
+    visibility: hidden;
+    transition: transform .5s cubic-bezier(.22, .8, .26, 1),
+        visibility 0s linear .5s;
+}
+
+.gnb.open {
+    transform: none;
+    visibility: visible;
+    transition-delay: 0s;
+}
+
+.gnb a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.gnb ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.gnb__inner {
+    position: relative;
+    width: min(1440px, calc(100% - 48px));
+    /* 1920 기준: 좌우 여백 240 */
+    height: 100%;
+    margin: 0 auto;
+}
+
+/* 맨 위 줄: 헤더 위치에 로고 + X */
+.gnb__top {
+    position: relative;
+    height: 44px;
+}
+
+/* 패널 로고: 위치와 크기는 JS가 헤더 로고에 맞춰 줌 */
+.gnb__logo {
+    position: fixed;
+    display: block;
+}
+
+.gnb__logo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* 메뉴 3줄 (12컬럼 중 3칸씩) */
+.gnb__cols {
+    display: grid;
+    grid-template-columns: repeat(3, 366px) 1fr;
+    margin-top: 102px;
+}
+
+.gnb__col h2 {
+    font-size: 30px;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -.01em;
+}
+
+/* 제목(SHOP / BRAND / ABOUT) 밑 짧은 가로선 */
+.gnb__col h2 {
+    position: relative;
+}
+
+.gnb__col h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    /* 제목 글씨 왼쪽 끝에 맞춤 */
+    top: calc(100% + 14px);
+    /* 제목에서 떨어진 거리 */
+    width: 32px;
+    /* 선 길이 */
+    height: 2px;
+    /* 선 두께 */
+    background: #5a5a5a;
+}
+
+.gnb__col ul {
+    margin-top: 60px;
+}
+
+.gnb__col li+li {
+    margin-top: 20px;
+}
+
+.gnb__col li a {
+    font-size: 24px;
+    line-height: 1.2;
+    color: #6b6b68;
+    transition: color .2s;
+}
+
+.gnb__col li a:hover {
+    color: #111;
+}
+
+/* 오른쪽 위 아이콘: X 버튼 밑에 오른쪽 정렬 (정확한 위치는 JS가 계산) */
+.gnb__util {
+    position: absolute;
+    top: 60px;
+    /* JS가 덮어씀 (JS가 안 돌 때의 대비용 값) */
+    right: 0;
+    display: flex;
+    gap: 24px;
+}
+
+.gnb__util svg {
+    display: block;
+    width: 30px;
+    height: 30px;
+}
+
+/* SNS */
+.gnb__sns {
+    position: absolute;
+    left: 0;
+    top: 648px;
+    display: flex;
+    gap: 24px;
+}
+
+.gnb__sns svg {
+    display: block;
+    width: 30px;
+    height: 30px;
+}
+
+/* 그라데이션 원 */
+.gnb__orb {
+    position: absolute;
+    right: 0;
+    top: 620px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(100deg, #d4f02a 0%, #8fd0a8 50%, #78b4e8 100%);
+}
+
+/* ===== 햄버거 ⇄ X 버튼 ===== */
+.menu-btn {
+    position: relative;
+    flex: none;
+    width: 16px;
+    /* 원래 햄버거 크기 → 헤더가 밀리지 않음 */
+    height: 16px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    color: #111;
+    cursor: pointer;
+}
+
+.menu-btn::after {
+    /* 눈에 안 보이는 클릭 영역 (레이아웃에는 영향 없음) */
+    content: '';
+    position: absolute;
+    inset: -12px;
+}
+
+.menu-btn:focus {
+    outline: none;
+}
+
+.menu-btn:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 6px;
+}
+
+.menu-btn span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 16px;
+    /* 선 길이 */
+    height: 1.5px;
+    /* 선 두께 (기존 2px → 가늘게) */
+    margin: -.75px 0 0 -8px;
+    background: currentColor;
+    transition: transform .4s cubic-bezier(.22, .8, .26, 1);
+}
+
+.menu-btn span:nth-child(1) {
+    transform: translateY(-3px);
+}
+
+/* = 모양 (선 사이 간격 6px) */
+.menu-btn span:nth-child(2) {
+    transform: translateY(3px);
+}
+
+.menu-btn.is-x span:nth-child(1) {
+    transform: rotate(45deg);
+}
+
+/* X 모양 */
+.menu-btn.is-x span:nth-child(2) {
+    transform: rotate(-45deg);
+}
+
+/* 패널 위에 겹치는 X 버튼 (평소엔 숨김) */
+.menu-btn--x {
+    position: fixed;
+    z-index: 1001;
+    /* 패널(1000)보다 위 */
+    visibility: hidden;
+}
+
+.menu-btn--x.show {
+    visibility: visible;
+}
+
+html { scrollbar-gutter: stable; }           /* 스크롤바가 생겨도 폭 고정 */
+
+header {
+  box-sizing: border-box;
+  width: 100%;                               /* 100vw 쓰면 스크롤바 때문에 밀림 → % 사용 */
+  height: 35px;                              /* 높이 고정 */
+  overflow: hidden;                          /* 내용이 늘어나도 높이가 안 변함 */
+}
+header a {
+  transition: none;                          /* 눌렀을 때 크기/위치가 움직이는 효과 제거 */
+  transform: none;
+}
+header a:hover, header a:focus, header a:active {
+  transform: none;
+  font-weight: inherit;                      /* hover 때 글씨 굵기가 바뀌어 옆이 밀리는 것 방지 */
+  letter-spacing: inherit;
+}
+
+/* container ============================================================================================================ */
+
+/* ===== 변수 / 페이지 기본 (About 페이지에서만 적용: JS가 html에 mg-page 클래스를 붙임) ===== */
+html.mg-page {
+  --bg: #111;
+  --fg: #f3f3f1;
+  --mut: #b5b5b3;
+  --hd: 35px;                                   /* 사이트 헤더 높이 */
+  --u: calc((100vh - var(--hd)) / 100);         /* 화면 높이(헤더 제외)의 1% */
+  scrollbar-width: none;                        /* 스크롤바 숨김: 헤더가 좌우로 밀리지 않음 */
+  -ms-overflow-style: none;
+}
+html.mg-page::-webkit-scrollbar { display: none; }
+html.mg-page body { background: var(--bg); color: var(--fg); overflow: hidden; }   /* 슬라이드: 스크롤 없음 */
+html.mg-detail body { overflow: auto; }                                            /* 상세: 스크롤 가능 */
+
+/* 우선순위 0 리셋: 아래에서 클래스로 준 값이 항상 이김 */
+:where(.mg, .mg *) { box-sizing: border-box; margin: 0; }
+.mg img { display: block; }
+.mg-data { display: none; }                    /* 데이터 보관용 */
+
+/* ===== 1) 슬라이드 (헤더 아래 영역) ===== */
+.mg-car {
+  position: fixed;
+  top: var(--hd);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  touch-action: pan-y;
+  cursor: grab;
+  user-select: none;
+  background: var(--bg);
+}
+.mg-item {
+  --h: calc(72 * var(--u));                     /* 가운데 이미지 높이 */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: var(--h);
+  aspect-ratio: 5 / 7;
+  transition: transform .7s cubic-bezier(.22, .8, .26, 1),
+              opacity .7s, left .8s, top .8s, height .8s;
+  will-change: transform;
+}
+.mg-item img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+
+/* 클릭하면 가운데 이미지가 커버 자리(왼쪽 위)로 이동 */
+html.mg-opening .mg-item.is-center { --h: calc(100 * var(--u)); left: 0; top: 0; }
+html.mg-opening .mg-item:not(.is-center) { opacity: 0 !important; }
+
+.mg-hint {
+  position: fixed;
+  bottom: 5vh;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: var(--mut);
+  font-size: 13px;
+  pointer-events: none;
+}
+html.mg-opening .mg-hint { display: none; }
+
+/* ===== 2) 가로 스크롤 상세 ===== */
+.mg-det { display: none; }
+html.mg-detail .mg-car { display: none; }
+html.mg-detail .mg-det { display: block; }
+
+.mg-stick {
+  position: sticky;
+  top: var(--hd);                               /* 처음부터 헤더 바로 아래에 고정 */
+  height: calc(100vh - var(--hd));
+  overflow: hidden;
+  background: var(--bg);
+}
+.mg-track {
+  position: relative;
+  display: flex;
+  height: 100%;
+  will-change: transform;
+}
+.mg-ov {                                        /* 이전 매거진 덮개: 평소엔 완전히 가려짐 */
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  overflow: hidden;
+  background: var(--bg);
+  pointer-events: none;
+  clip-path: inset(0 100% 0 0);
+}
+
+/* 커버 (슬라이드 썸네일과 같은 이미지) */
+.mg-cover { flex: none; height: 100%; aspect-ratio: 5 / 7; }
+.mg-cover img { width: 100%; height: 100%; object-fit: cover; }
+
+/* 제목 + 설명 + 패널 */
+.mg-sec {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin-left: calc(var(--gap) * var(--u));
+}
+.mg-head {
+  position: relative;
+  flex: none;
+  height: calc(var(--pt) * var(--u));           /* 패널이 시작되는 높이 */
+}
+.mg-head h2 {
+  position: absolute;
+  left: 0;
+  top: calc(14 * var(--u));
+  white-space: nowrap;
+  font-size: clamp(16px, calc(2.8 * var(--u)), 34px);
+  font-weight: 700;
+}
+.mg-head p {
+  position: absolute;
+  top: calc(var(--dt, 19.5) * var(--u));        /* 설명 시작 높이 */
+  left: calc(var(--x, 0) * var(--u));           /* 설명 가로 위치 */
+  width: calc(var(--mw, 40) * var(--u));
+  font-size: clamp(10px, calc(1.45 * var(--u)), 15px);
+  line-height: 1.7;
+  color: var(--mut);
+  word-break: keep-all;                         /* 단어 중간에서 줄바꿈 안 함 */
+  overflow-wrap: break-word;
+}
+.mg-panels { flex: 1; min-height: 0; display: flex; }   /* 남은 높이 전부 (아래까지 꽉 참) */
+.mg-panels img { flex: none; height: 100%; object-fit: cover; }
+.mg-panels img:nth-child(1) { width: calc(var(--w1) * var(--u)); }
+.mg-panels img:nth-child(2) { width: calc(var(--w2) * var(--u)); }
+.mg-panels img:nth-child(3) { width: calc(var(--w3) * var(--u)); }
+
+/* ===== Next Magazine (끝에서 턱 걸리는 영역) ===== */
+.mg-nx {
+  flex: none;
+  display: flex;
+  align-items: center;                          /* 글씨를 세로 가운데로 */
+  height: 100%;
+  padding-left: calc(40 * var(--u));            /* 패널 끝에서 글씨까지 */
+  margin-right: calc(14 * var(--u));            /* 글씨와 다음 매거진 썸네일 사이 */
+  cursor: pointer;
+}
+.mg-nx-txt { text-align: right; white-space: nowrap; }
+.mg-nx-txt small {
+  display: block;
+  margin-bottom: calc(1 * var(--u));
+  font-size: clamp(11px, calc(1.5 * var(--u)), 16px);
+}
+.mg-nx-txt b {
+  display: block;
+  font-size: clamp(14px, calc(2 * var(--u)), 22px);
+  font-weight: 700;
+}
+
+/* ===== 돌아가기 버튼 (헤더 아래) ===== */
+.mg-close { display: none; }
+html.mg-detail .mg-close { display: block; }
+.mg-close {
+  position: fixed;
+  top: calc(var(--hd) + 14px);
+  right: 20px;
+  z-index: 20;
+  padding: 8px 14px;
+  border: 1px solid #fff6;
+  border-radius: 999px;
+  background: #000a;
+  color: var(--fg);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+
