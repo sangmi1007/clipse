@@ -1,0 +1,762 @@
+@charset "utf-8";
+
+/* ===== 기본 ===== */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+html {
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    text-size-adjust: none;
+    scrollbar-gutter: stable;
+}
+
+body {
+    font-family: 'Pretendard';
+    font-size: 16px;
+    line-height: 1.5;
+    color: #111;
+}
+
+/* ===== header ===== */
+#header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 35px;
+    background: #c7ff00;
+    color: #222;
+    font-size: 16px;
+    font-weight: 400;
+    padding-top: 5px;
+}
+
+.inner_header {
+    width: 100%;
+    max-width: 1500px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__logo,
+.header__logo img {
+    display: block;
+}
+
+.header__nav ul {
+    display: flex;
+    gap: 8vw;
+    padding-left: 36px;
+}
+
+.header__util {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding-right: 20px;
+}
+
+.header__util a {
+    display: flex;
+}
+
+.header__util img {
+    display: block;
+    width: 16px;
+    height: 16px;
+}
+
+/* ===== 햄버거 전체 메뉴 ===== */
+.gnb {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 794px;
+    max-height: 100vh;
+    background: #f1f0eb;
+    color: #111;
+    transform: translateY(-100%);
+    visibility: hidden;
+    transition: transform .5s cubic-bezier(.22, .8, .26, 1),
+        visibility 0s linear .5s;
+}
+
+.gnb.open {
+    transform: none;
+    visibility: visible;
+    transition-delay: 0s;
+}
+
+.gnb a {
+    color: inherit;
+}
+
+.gnb__inner {
+    position: relative;
+    width: min(1440px, calc(100% - 48px));
+    height: 100%;
+    margin: 0 auto;
+}
+
+.gnb__top {
+    position: relative;
+    height: 44px;
+}
+
+.gnb__logo {
+    position: fixed;
+    display: block;
+}
+
+.gnb__logo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.gnb__cols {
+    display: grid;
+    grid-template-columns: repeat(3, 366px) 1fr;
+    margin-top: 102px;
+}
+
+.gnb__col h2 {
+    position: relative;
+    font-size: 30px;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -.01em;
+}
+
+.gnb__col h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: calc(100% + 14px);
+    width: 32px;
+    height: 2px;
+    background: #5a5a5a;
+}
+
+.gnb__col ul {
+    margin-top: 60px;
+}
+
+.gnb__col li+li {
+    margin-top: 20px;
+}
+
+.gnb__col li a {
+    font-size: 24px;
+    line-height: 1.2;
+    color: #6b6b68;
+    transition: color .2s;
+}
+
+.gnb__col li a:hover {
+    color: #111;
+}
+
+.gnb__util {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    display: flex;
+    gap: 24px;
+}
+
+.gnb__util svg {
+    display: block;
+    width: 30px;
+    height: 30px;
+}
+
+.gnb__sns {
+    position: absolute;
+    left: 0;
+    top: 648px;
+    display: flex;
+    gap: 24px;
+}
+
+.gnb__sns svg {
+    display: block;
+    width: 30px;
+    height: 30px;
+}
+
+.gnb__orb {
+    position: absolute;
+    right: 0;
+    top: 620px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(100deg, #d4f02a 0%, #8fd0a8 50%, #78b4e8 100%);
+}
+
+/* ===== 햄버거 ⇄ X 버튼 ===== */
+.menu-btn {
+    position: relative;
+    flex: none;
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    color: #111;
+    cursor: pointer;
+}
+
+.menu-btn::after {
+    content: '';
+    position: absolute;
+    inset: -12px;
+}
+
+.menu-btn:focus {
+    outline: none;
+}
+
+.menu-btn:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 6px;
+}
+
+.menu-btn span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 16px;
+    height: 1.5px;
+    margin: -.75px 0 0 -8px;
+    background: currentColor;
+    transition: transform .4s cubic-bezier(.22, .8, .26, 1);
+}
+
+.menu-btn span:nth-child(1) {
+    transform: translateY(-3px);
+}
+
+.menu-btn span:nth-child(2) {
+    transform: translateY(3px);
+}
+
+.menu-btn.is-x span:nth-child(1) {
+    transform: rotate(45deg);
+}
+
+.menu-btn.is-x span:nth-child(2) {
+    transform: rotate(-45deg);
+}
+
+.menu-btn--x {
+    position: fixed;
+    z-index: 1001;
+    visibility: hidden;
+}
+
+.menu-btn--x.show {
+    visibility: visible;
+}
+
+/* ===== 서브 내비게이션 ===== */
+.subnav {
+    --header: 40px;
+    position: sticky;
+    top: var(--header);
+    z-index: 99;
+    height: 36px;
+    background: #f1efea;
+}
+
+.subnav__list {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    max-width: 1500px;
+    box-sizing: border-box;
+    height: 100%;
+    margin: 0 auto;
+    padding-right: 260px;
+    gap: 5vw;
+}
+
+.subnav__list a {
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: .02em;
+    color: #aaa;
+    transition: color .3s ease;
+}
+
+.subnav__list a:hover,
+.subnav__list a.is-active {
+    color: #111;
+    font-weight: 600;
+}
+
+/* ===== container ===== */
+.item {
+    width: 100%;
+}
+
+.item img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.item_text {
+    text-align: center;
+    padding: 100px 0;
+    background-color: #2a2a2a;
+    color: #fff;
+}
+
+.item_text h2 {
+    margin-bottom: 20px;
+}
+
+.item_text p {
+    font-weight: 200;
+}
+
+.item_video {
+    width: 100%;
+    height: calc(100vh - 76px);
+    overflow: hidden;
+    line-height: 0;
+}
+
+.item_video video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ===== 상품 목록 ===== */
+.shop-list {
+    width: 100%;
+    max-width: 1500px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 70px 20px 120px;
+}
+
+.shop-list__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px 16px;
+}
+
+.product a {
+    display: block;
+}
+
+.product__thumb {
+    position: relative;
+    aspect-ratio: 267 / 345;
+    border-radius: 10px;
+    background: #f7f7f7;
+    overflow: hidden;
+}
+
+.product__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: opacity .5s ease, transform .8s cubic-bezier(.16, 1, .3, 1);
+}
+
+.product__img--hover {
+    opacity: 0;
+}
+
+.product a:hover .product__img:not(.product__img--hover) {
+    opacity: 0;
+}
+
+.product a:hover .product__img--hover {
+    opacity: 1;
+}
+
+.product__dot {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: linear-gradient(90deg, #c7ff00, #f2f1ec);
+    overflow: hidden;
+}
+
+.product__dot::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+}
+
+.product__dot::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #c7ff00, #9ec9d6);
+    opacity: 0;
+    transition: opacity .5s ease;
+}
+
+.product__dot:hover::after {
+    opacity: 1;
+}
+
+.product__name {
+    margin-top: 14px;
+    padding-left: 6px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.product__price {
+    margin-top: 4px;
+    padding-left: 6px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* ===== footer ===== */
+.footer {
+    background: #2a2a2a;
+    color: #fff;
+    padding: 20px 0 60px;
+}
+
+.footer__inner {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 32px clamp(20px, 12.5vw, 240px) 0;
+}
+
+.footer__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.footer__nav ul {
+    display: flex;
+    gap: 20px;
+}
+
+.footer__nav a {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.footer__address {
+    margin-top: 12px;
+    font-style: normal;
+    font-size: 10px;
+    line-height: 1.7;
+    color: #bdbdbd;
+}
+
+.footer__top-btn {
+    flex: none;
+    display: block;
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    transition: transform .3s ease;
+}
+
+.footer__top-btn:hover {
+    transform: translateY(-4px);
+}
+
+.footer__top-btn img {
+    width: 100%;
+    height: 100%;
+}
+
+.footer__logo {
+    margin-top: 120px;
+}
+
+.footer__logo img {
+    width: clamp(200px, 42vw, 800px);
+    height: auto;
+}
+
+/* ★★★ 여기까지 웹 (아래부터는 768px 이하에서만 적용되는 모바일) ★★★ */
+
+/* ============================================================
+   반응형: 모바일(앱) 화면 — 768px 이하
+   ============================================================ */
+@media (max-width: 768px) {
+
+    /* 헤더: 햄버거(왼쪽) · 로고(가운데) · 아이콘(오른쪽) */
+    #header {
+        height: 40px;
+        padding-top: 0;
+        background: #c7ff00;
+    }
+
+    .inner_header {
+        position: relative;
+        height: 100%;
+        padding: 0 16px;
+        justify-content: flex-end;
+    }
+
+    .header__nav {
+        display: none;
+    }
+
+    .header__logo {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .header__logo img {
+        height: 16px;
+        width: auto;
+    }
+
+    .header__util {
+        gap: 18px;
+        padding-right: 0;
+    }
+
+    .header__util img {
+        width: 20px;
+        height: 20px;
+    }
+
+    #header .menu-btn {
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        margin-top: -8px;
+    }
+
+    /* ADD 화면: 어두운 헤더 */
+    .page-add #header {
+        background: #2a2a2a;
+    }
+
+    .page-add .header__logo img,
+    .page-add .header__util img {
+        filter: brightness(0) invert(1);
+    }
+
+    .page-add #header .menu-btn {
+        color: #fff;
+    }
+
+    /* 서브 내비 */
+    .subnav {
+        --header: 40px;
+        height: 40px;
+    }
+
+    .subnav__list {
+        padding-right: 16px;
+        gap: 16px;
+    }
+
+    .subnav__list a {
+        font-size: 14px;
+    }
+
+    /* 이미지 / 텍스트 / 영상 */
+    .item {
+        aspect-ratio: 4 / 5;
+        overflow: hidden;
+    }
+
+    .item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: scale(1.05);
+    }
+
+    .item_text {
+        padding: 56px 20px;
+    }
+
+    .item_text h2 {
+        font-size: 20px;
+        margin-bottom: 14px;
+    }
+
+    .item_text p {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .item_video {
+        height: auto;
+        aspect-ratio: 8 / 5;
+    }
+
+    /* 상품 목록: 2열 */
+    .shop-list {
+        padding: 16px 16px 56px;
+    }
+
+    .shop-list--first {
+        padding-top: 32px;
+    }
+
+    .shop-list__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px 8px;
+    }
+
+    .product__thumb {
+        border-radius: 8px;
+    }
+
+    .product__dot {
+        top: 8px;
+        right: 8px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .product__name {
+        margin-top: 10px;
+        padding-left: 2px;
+        font-size: 13px;
+    }
+
+    .product__price {
+        padding-left: 2px;
+        font-size: 12px;
+    }
+
+    /* 터치 기기: 호버 이미지 교체 안 함 */
+    .product a:hover .product__img:not(.product__img--hover) {
+        opacity: 1;
+    }
+
+    .product a:hover .product__img--hover {
+        opacity: 0;
+    }
+
+
+    /* 전체 메뉴(햄버거 패널) */
+    .gnb {
+        height: 100vh;
+        height: 100dvh;
+    }
+
+    .gnb__inner {
+        width: calc(100% - 32px);
+    }
+
+    .gnb__top {
+        height: 40px;
+    }
+
+    .gnb__cols {
+        display: block;
+        margin-top: 40px;
+    }
+
+    .gnb__col+.gnb__col {
+        margin-top: 36px;
+    }
+
+    .gnb__col h2 {
+        font-size: 24px;
+    }
+
+    .gnb__col ul {
+        margin-top: 36px;
+    }
+
+    .gnb__col li+li {
+        margin-top: 14px;
+    }
+
+    .gnb__col li a {
+        font-size: 20px;
+    }
+
+    .gnb__util {
+        display: none;
+    }
+
+    .gnb__sns {
+        top: auto;
+        bottom: 36px;
+        gap: 18px;
+    }
+
+    .gnb__sns svg {
+        width: 26px;
+        height: 26px;
+    }
+
+    .gnb__orb {
+        top: auto;
+        bottom: 30px;
+        width: 48px;
+        height: 48px;
+    }
+
+    /* ===== footer ===== */
+    .footer { padding: 0; }
+    .footer__inner { padding: 40px 28px 39px; }
+    .footer__top { position: relative; display: block; }
+    .footer__nav ul { gap: 40px; }
+    .footer__nav a { font-size: 16px; }
+    .footer__address { margin-top: 34px; font-size: 10px; line-height: 1.5; }
+    .footer__address .sep { display: none; }
+    .footer__top-btn { position: absolute; top: -3px; right: 0; width: 32px; height: 32px; }
+    .footer__logo { margin-top: 150px; }
+    .footer__logo img { width: 333px; max-width: 100%; margin-left: 5px; }
+}
