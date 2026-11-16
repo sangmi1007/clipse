@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CLIPSE</title>
+    <link rel="icon" href="./images/favicon.png" type="image/png">
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="css/style3.css">
+</head>
+
+<body class="page-add">
+    <!-- header -->
+    <div id="header">
+        <div class="inner_header">
+            <div class="header__logo">
+                <a href="./index.html">
+                    <img id="hdLogo" src="./images/header/header_logo.svg" alt="CLIPSE">
+                </a>
+            </div>
+
+            <nav class="header__nav" aria-label="주요 메뉴">
+                <ul>
+                    <li><a href="./brand.html">Brand</a></li>
+                    <li><a href="./shop.html">Shop</a></li>
+                    <li><a href="./about.html">About</a></li>
+                </ul>
+            </nav>
+
+            <div class="header__util">
+                <a href="#" aria-label="마이페이지">
+                    <img src="./images/header/login.svg" alt="login">
+                </a>
+                <a href="#" aria-label="장바구니">
+                    <img src="./images/header/shop.svg" alt="shop">
+                </a>
+                <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="gnb"
+                    aria-label="메뉴 열기">
+                    <span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <nav class="gnb" id="gnb" aria-label="전체 메뉴" aria-hidden="true">
+        <div class="gnb__inner">
+            <div class="gnb__top">
+                <a href="/" class="gnb__logo" id="gnbLogo"><img src="./images/header/header_logo.svg" alt="CLIPSE"></a>
+            </div>
+
+            <div class="gnb__cols">
+                <div class="gnb__col">
+                    <h2>SHOP</h2>
+                    <ul>
+                        <li><a href="./shop.html">Suncare</a></li>
+                        <li><a href="./shop2.html">Hydration</a></li>
+                        <li><a href="./shop3.html">Add</a></li>
+                    </ul>
+                </div>
+                <div class="gnb__col">
+                    <h2>BRAND</h2>
+                    <ul>
+                        <li><a href="./brand.html">Brand Story</a></li>
+                    </ul>
+                </div>
+                <div class="gnb__col">
+                    <h2>ABOUT</h2>
+                    <ul>
+                        <li><a href="./about.html">Magazine</a></li>
+                    </ul>
+                </div>
+
+                <div class="gnb__util">
+                    <a href="#" aria-label="마이페이지">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="8" r="3.5" />
+                            <path d="M5 20c0-4 3-6 7-6s7 2 7 6z" />
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="장바구니">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 8h14l-1 12H6z" />
+                            <path d="M9 8V6a3 3 0 0 1 6 0v2" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <ul class="gnb__sns">
+                <li><a href="#" aria-label="카카오톡">
+                        <svg viewBox="0 0 24 24">
+                            <ellipse cx="12" cy="11" rx="10" ry="8.5" fill="currentColor" />
+                            <path d="M7 17l-2 4 5-2z" fill="currentColor" /><text x="12" y="13" font-size="5"
+                                font-weight="700" text-anchor="middle" fill="#f1f0eb">TALK</text>
+                        </svg>
+                    </a></li>
+                <li><a href="#" aria-label="인스타그램">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="5" />
+                            <circle cx="12" cy="12" r="4" />
+                            <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
+                        </svg>
+                    </a></li>
+                <li><a href="#" aria-label="유튜브">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="2" y="5" width="20" height="14" rx="4" fill="currentColor" />
+                            <path d="M10 9l5 3-5 3z" fill="#f1f0eb" />
+                        </svg>
+                    </a></li>
+                <li><a href="#" aria-label="X">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                    </a></li>
+            </ul>
+
+            <i class="gnb__orb"></i>
+        </div>
+    </nav>
+
+    <button type="button" class="menu-btn menu-btn--x" id="menuClose" aria-label="메뉴 닫기" tabindex="-1">
+        <span></span><span></span>
+    </button>
+
+    <!-- sub header -->
+    <nav class="subnav" aria-label="카테고리">
+        <ul class="subnav__list">
+            <li><a href="./shop.html">SUNCARE</a></li>
+            <li><a href="./shop2.html">HYDRATION</a></li>
+            <li><a href="./shop3.html">ADD</a></li>
+        </ul>
+    </nav>
+
+    <!-- 상품 목록 -->
+    <section class="shop-list shop-list--first">
+        <ul class="shop-list__grid">
+
+            <li class="product">
+                <a href="#">
+                    <div class="product__thumb">
+                        <img class="product__img" src="./images/shop/tower.png" alt="ACTIVE FACE TOWEL">
+                        <img class="product__img product__img--hover" src="./images/shop/tower_hover.png"
+                            alt="" aria-hidden="true">
+                        <span class="product__dot" aria-hidden="true"></span>
+                    </div>
+                    <h3 class="product__name">ACTIVE FACE TOWEL</h3>
+                    <p class="product__price">₩17,900</p>
+                </a>
+            </li>
+
+            <li class="product">
+                <a href="#">
+                    <div class="product__thumb">
+                        <img class="product__img" src="./images/shop/bandana.png" alt="COOLING BANDANA">
+                        <img class="product__img product__img--hover" src="./images/shop/bandana_hover.png"
+                            alt="" aria-hidden="true">
+                        <span class="product__dot" aria-hidden="true"></span>
+                    </div>
+                    <h3 class="product__name">COOLING BANDANA</h3>
+                    <p class="product__price">₩14,900</p>
+                </a>
+            </li>
+
+            <li class="product">
+                <a href="#">
+                    <div class="product__thumb">
+                        <img class="product__img" src="./images/shop/socks.png" alt="TECHNICAL SOCKS">
+                        <img class="product__img product__img--hover" src="./images/shop/socks_hover.png"
+                            alt="" aria-hidden="true">
+                        <span class="product__dot" aria-hidden="true"></span>
+                    </div>
+                    <h3 class="product__name">TECHNICAL SOCKS</h3>
+                    <p class="product__price">₩17,900</p>
+                </a>
+            </li>
+
+            <li class="product">
+                <a href="#">
+                    <div class="product__thumb">
+                        <img class="product__img" src="./images/shop/bottle.png" alt="CLIPSE WATER BOTTLE">
+                        <img class="product__img product__img--hover" src="./images/shop/bottle_hover.png"
+                            alt="" aria-hidden="true">
+                        <span class="product__dot" aria-hidden="true"></span>
+                    </div>
+                    <h3 class="product__name">CLIPSE WATER BOTTLE</h3>
+                    <p class="product__price">₩14,900</p>
+                </a>
+            </li>
+
+            <li class="product">
+                <a href="#">
+                    <div class="product__thumb">
+                        <img class="product__img" src="./images/shop/flask.png" alt="CLIPSE SOFT FLASK">
+                        <img class="product__img product__img--hover" src="./images/shop/flask_hover.png"
+                            alt="" aria-hidden="true">
+                        <span class="product__dot" aria-hidden="true"></span>
+                    </div>
+                    <h3 class="product__name">CLIPSE SOFT FLASK</h3>
+                    <p class="product__price">₩17,900</p>
+                </a>
+            </li>
+
+            <li class="product">
+                <a href="#">
+                    <div class="product__thumb">
+                        <img class="product__img" src="./images/shop/mirror.png" alt="TRAVEL MIRROR">
+                        <img class="product__img product__img--hover" src="./images/shop/mirror_hover.png"
+                            alt="" aria-hidden="true">
+                        <span class="product__dot" aria-hidden="true"></span>
+                    </div>
+                    <h3 class="product__name">TRAVEL MIRROR</h3>
+                    <p class="product__price">₩14,900</p>
+                </a>
+            </li>
+
+            <li class="product">
+                <a href="#">
+                    <div class="product__thumb">
+                        <img class="product__img" src="./images/shop/cara1.png"
+                            alt="CARABINER - NEON LIME -">
+                        <img class="product__img product__img--hover"
+                            src="./images/shop/cara1_hover.png" alt="" aria-hidden="true">
+                        <span class="product__dot" aria-hidden="true"></span>
+                    </div>
+                    <h3 class="product__name">CARABINER - NEON LIME -</h3>
+                    <p class="product__price">₩17,900</p>
+                </a>
+            </li>
+
+            <li class="product">
+                <a href="#">
+                    <div class="product__thumb">
+                        <img class="product__img" src="./images/shop/cara2.png"
+                            alt="CARABINER - GRACIEL BLUE -">
+                        <img class="product__img product__img--hover"
+                            src="./images/shop/cara2_hover.png" alt="" aria-hidden="true">
+                        <span class="product__dot" aria-hidden="true"></span>
+                    </div>
+                    <h3 class="product__name">CARABINER - GRACIEL BLUE -</h3>
+                    <p class="product__price">₩14,900</p>
+                </a>
+            </li>
+
+
+        </ul>
+    </section>
+
+    <!-- footer -->
+    <footer class="footer">
+        <div class="footer__inner">
+
+            <div class="footer__top">
+                <div class="footer__info">
+                    <nav class="footer__nav" aria-label="푸터 메뉴">
+                        <ul>
+                            <li><a href="./brand.html">BRAND</a></li>
+                            <li><a href="./shop.html">SHOP</a></li>
+                            <li><a href="./about.html">ABOUT</a></li>
+                        </ul>
+                    </nav>
+                    <address class="footer__address">
+                        <p>주) 00000000 | 대표자명: 고상미 | 사업자번호: 000-00-00000 | 000-0000-0000</p>
+                        <p>이메일문의 : service.kr@clipse.com | 주소: 부산광역시 강서구 OOOO.</p>
+                    </address>
+                </div>
+
+                <button type="button" class="footer__top-btn" aria-label="맨 위로 이동">
+                    <img src="./images/footer/up.svg" alt="up">
+                </button>
+            </div>
+
+            <div class="footer__logo">
+                <img src="./images/footer/footer_logo.svg" alt="CLIPSE_푸터">
+            </div>
+
+        </div>
+    </footer>
+
+    <script src="js/jquery-4.0.0.min.js"></script>
+    <script src="js/script3.js"></script>
+</body>
+
+</html>
